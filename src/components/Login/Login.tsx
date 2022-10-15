@@ -1,4 +1,4 @@
-import { useState, FormEvent, ChangeEvent } from 'react';
+import { useState, useEffect, FormEvent, ChangeEvent } from 'react';
 
 import Card from '../UI/Card/Card';
 import Button from '../UI/Button/Button';
@@ -13,16 +13,22 @@ const Login = ({ onLogin }: ILogin) => {
   const [passwordIsValid, setPasswordIsValid] = useState<boolean>();
   const [formIsValid, setFormIsValid] = useState<boolean>(false);
 
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setFormIsValid(enteredEmail.includes('@') && enteredPassword.trim().length > 6);
+    }, 500);
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [enteredEmail, enteredPassword]);
+
   const emailChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
     setEnteredEmail(event.target.value);
-
-    setFormIsValid(event.target.value.includes('@') && enteredPassword.trim().length > 6);
   };
 
   const passwordChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
     setEnteredPassword(event.target.value);
-
-    setFormIsValid(event.target.value.trim().length > 6 && enteredEmail.includes('@'));
   };
 
   const validateEmailHandler = () => {
