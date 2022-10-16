@@ -1,23 +1,28 @@
-import { INavigation } from '../../interfaces';
+import { useContext } from 'react';
+
+import AuthContext from '../../store/auth-context';
+
 import classes from './Navigation.module.css';
 
-const Navigation = ({ isLoggedIn, onLogout }: INavigation) => {
+const Navigation = () => {
+  const ctx = useContext(AuthContext);
+
   return (
     <nav className={classes.nav}>
       <ul>
-        {isLoggedIn && (
+        {ctx.isLoggedIn && (
           <li>
             <a href="/">Users</a>
           </li>
         )}
-        {isLoggedIn && (
+        {ctx.isLoggedIn && (
           <li>
             <a href="/">Admin</a>
           </li>
         )}
-        {isLoggedIn && (
+        {ctx.isLoggedIn && (
           <li>
-            <button onClick={onLogout}>Logout</button>
+            <button onClick={ctx.onLogout}>Logout</button>
           </li>
         )}
       </ul>

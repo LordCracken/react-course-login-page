@@ -1,15 +1,17 @@
-import { useState, useEffect, useReducer, FormEvent, ChangeEvent } from 'react';
+import { useState, useEffect, useReducer, useContext, FormEvent, ChangeEvent } from 'react';
 
 import Card from '../UI/Card/Card';
 import Button from '../UI/Button/Button';
 
 import { emailReducer, passwordReducer } from '../../reducers';
+import AuthContext from '../../store/auth-context';
 
-import { ILogin } from '../../interfaces';
 import { EmailTypes, PasswordTypes } from '../../reducersInterfaces';
 import classes from './Login.module.css';
 
-const Login = ({ onLogin }: ILogin) => {
+const Login = () => {
+  const ctx = useContext(AuthContext);
+
   // const [enteredEmail, setEnteredEmail] = useState<string>('');
   // const [emailIsValid, setEmailIsValid] = useState<boolean>();
   // const [enteredPassword, setEnteredPassword] = useState<string>('');
@@ -54,7 +56,7 @@ const Login = ({ onLogin }: ILogin) => {
 
   const submitHandler = (event: FormEvent) => {
     event.preventDefault();
-    onLogin(emailState.value, passwordState.value);
+    ctx.onLogin();
   };
 
   return (

@@ -12,21 +12,3 @@ export interface IButton {
   className?: string;
   onClick?: () => void;
 }
-
-export interface ILogin {
-  onLogin: (email: string, password: string) => void;
-}
-
-export interface IHome {
-  onLogout: () => void;
-}
-
-export interface IMainHeader {
-  isAuthenticated: boolean;
-  onLogout: () => void;
-}
-
-export interface INavigation {
-  isLoggedIn: boolean;
-  onLogout: () => void;
-}
