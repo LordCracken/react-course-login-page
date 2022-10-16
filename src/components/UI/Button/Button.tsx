@@ -1,7 +1,7 @@
 import { IButton } from '../../../interfaces';
 import classes from './Button.module.css';
 
-const Button = ({ children, type = 'button', className, disabled, onClick }: IButton) => {
+const Button = ({ children, type = 'button', className, disabled = false, onClick }: IButton) => {
   return (
     <button
       type={type}

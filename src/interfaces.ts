@@ -8,7 +8,7 @@ export interface ICard {
 export interface IButton {
   children: ReactNode;
   type: 'button' | 'submit' | 'reset';
-  disabled: boolean;
+  disabled?: boolean;
   className?: string;
   onClick?: () => void;
 }
