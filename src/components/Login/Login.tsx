@@ -16,10 +16,6 @@ const Login = () => {
   const emailInputRef = useRef<HTMLInputElement | null>(null);
   const passwordInputRef = useRef<HTMLInputElement | null>(null);
 
-  // const [enteredEmail, setEnteredEmail] = useState<string>('');
-  // const [emailIsValid, setEmailIsValid] = useState<boolean>();
-  // const [enteredPassword, setEnteredPassword] = useState<string>('');
-  // const [passwordIsValid, setPasswordIsValid] = useState<boolean>();
   const [formIsValid, setFormIsValid] = useState<boolean>(false);
 
   const [emailState, dispatchEmail] = useReducer(emailReducer, { value: '', isValid: null });
@@ -40,14 +36,10 @@ const Login = () => {
 
   const emailChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
     dispatchEmail({ type: EmailTypes.userInput, val: event.target.value });
-
-    // setFormIsValid(!!emailState.isValid && !!passwordState.isValid);
   };
 
   const passwordChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
     dispatchPassword({ type: PasswordTypes.userInput, val: event.target.value });
-
-    // setFormIsValid(!!emailState.isValid && !!passwordState.isValid);
   };
 
   const validateEmailHandler = () => {
