@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ChangeEvent, ReactNode } from 'react';
 
 export interface ICard {
   children: ReactNode;
@@ -11,4 +11,14 @@ export interface IButton {
   disabled?: boolean;
   className?: string;
   onClick?: () => void;
+}
+
+export interface IInput {
+  id: string;
+  value: string;
+  label: string;
+  type: string;
+  isValid: boolean | null;
+  onChange: (event: ChangeEvent<HTMLInputElement>) => void;
+  onBlur: () => void;
 }
