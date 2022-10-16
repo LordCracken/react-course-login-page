@@ -9,7 +9,7 @@ export interface IButton {
   children: ReactNode;
   type: 'button' | 'submit' | 'reset';
   disabled: boolean;
-  className: string;
+  className?: string;
   onClick?: () => void;
 }
 

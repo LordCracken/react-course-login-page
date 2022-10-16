@@ -68,7 +68,7 @@ const Login = ({ onLogin }: ILogin) => {
           />
         </div>
         <div className={classes.actions}>
-          <Button type="submit" className={classes.btn} disabled={!formIsValid}>
+          <Button type="submit" disabled={!formIsValid}>
             Login
           </Button>
         </div>
